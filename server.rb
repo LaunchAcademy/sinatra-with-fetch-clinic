@@ -21,8 +21,8 @@ def write_to_json_file(location)
   # Either of these next two lines will work: pretty_generate just gives us line
   # breaks and indentation in our .json file (making it easier on the eyes)
 
-  updated_locations_json = updated_locations.to_json
-  # updated_locations_json = JSON.pretty_generate(updated_locations, indent: ' ')
+  # updated_locations_json = updated_locations.to_json
+  updated_locations_json = JSON.pretty_generate(updated_locations, indent: ' ')
 
   File.write("locations.json", updated_locations_json)
   return new_location
@@ -38,20 +38,20 @@ get "/locations" do
 end
 
 get "/locations.json" do
-  puts "hit the JSON locations route"
-  locations_json_data = File.read("locations.json")
-
-  status 200
-  content_type :json
-  locations_json_data
+  # puts "hit the JSON locations route"
+  # locations_json_data = File.read("locations.json")
+  #
+  # status 200
+  # content_type :json
+  # locations_json_data
 end
 
 post "/locations.json" do
-  new_location_data = JSON.parse(request.body.read)
-
-  new_location = write_to_json_file(new_location_data["location"])
-
-  status 200
-  content_type :json
-  new_location.to_json
+  # new_location_data = JSON.parse(request.body.read)
+  #
+  # new_location = write_to_json_file(new_location_data["location"])
+  #
+  # status 200
+  # content_type :json
+  # new_location.to_json
 end

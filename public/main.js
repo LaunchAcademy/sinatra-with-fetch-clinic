@@ -7,30 +7,11 @@ let appendLocationsArrayToHtml = (locations) => {
 }
 
 let fetchLocations = () => {
-  console.log("about to run a fetch request")
-  fetch("/locations.json")
-  .then((response) => {
-    if (response.ok){
-      return response
-    } else {
-      // create an error and throw it
-    }
-  })
-  .then((response) => {
-    console.log(response.body)
-    return response.json()
-  })
-  .then((parsedLocations) => {
-    const locationsArray = parsedLocations.locations
-    appendLocationsArrayToHtml(locationsArray)
-  })
-  .catch((errorFromTheFirstThen) => {
-    console.log(errorFromTheFirstThen)
-  })
+  // our code here
 }
 
 let postLocation = (event) => {
-  // debugger
+  // ooooh what does this all do?
   event.preventDefault()
 
   let cityInputField = document.getElementById('city')
@@ -43,23 +24,13 @@ let postLocation = (event) => {
     }
   }
 
-  fetch("/locations.json", {
-    method: "POST",
-    body: JSON.stringify(newLocation)
-  })
-  .then((response) => {
-    return response.json()
-  })
-  .then((newLocationBody) => {
-    const arrayOfOneLocation = [newLocationBody]
-    appendLocationsArrayToHtml(arrayOfOneLocation)
-  })
+  // ---------
+  // fetch code here
  }
 
 console.log("running JS code ")
 fetchLocations()
 console.log("Fetch complete")
-//
 
 document
   .getElementById('new-location-submit-button')

@@ -1,1 +1,14 @@
-{"locations":[{"id":1,"city":"Edinburgh","country":"Scotland"},{"id":2,"city":"St. Petersburg","country":"Russia"},{"id":3,"city":"Candy ","country":"Topia"},{"id":4,"city":"Bacon","country":"Topia"},{"id":5,"city":"","country":""},{"id":6,"city":"salad","country":"topia"}]}
+{
+ "locations": [
+  {
+   "id": 1,
+   "city": "Edinburgh",
+   "country": "Scotland"
+  },
+  {
+   "id": 2,
+   "city": "St. Petersburg",
+   "country": "Russia"
+  }
+ ]
+}
