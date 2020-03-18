@@ -7,10 +7,11 @@ let appendLocationsArrayToHtml = (locations) => {
 }
 
 let fetchLocations = () => {
-  // Your code here
+  // our code here
 }
 
 let postLocation = (event) => {
+  // ooooh what does this all do?
   event.preventDefault()
 
   let cityInputField = document.getElementById('city')
@@ -22,10 +23,14 @@ let postLocation = (event) => {
       country: countryInputField.value
     }
   }
-  // Your code here
-}
 
+  // ---------
+  // fetch code here
+ }
+
+console.log("running JS code ")
 fetchLocations()
+console.log("Fetch complete")
 
 document
   .getElementById('new-location-submit-button')
