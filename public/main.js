@@ -7,8 +7,27 @@ let appendLocationsArrayToHtml = (locations) => {
 }
 
 let fetchLocations = () => {
-  // Your code here
+  fetch("/locations.json")
+  .then((response) => {
+    if (response.ok){
+      return response
+    } else {
+      let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+      throw(error);
+    }
+  })
+  .then((returnfromthelastthen) => {
+    return returnfromthelastthen.json()
+  })
+  .then((parsedResponse) => {
+    appendLocationsArrayToHtml(parsedResponse.locations)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 }
+
 
 let postLocation = (event) => {
   event.preventDefault()
@@ -22,7 +41,17 @@ let postLocation = (event) => {
       country: countryInputField.value
     }
   }
-  // Your code here
+
+  fetch("/locations.json", {
+    method: "POST",
+    body: JSON.stringify(newLocation)
+  })
+  .then((response) => {
+    return response.json()
+  })
+  .then((parsedResponse) => {
+    appendLocationsArrayToHtml(parsedResponse.locations)
+  })
 }
 
 fetchLocations()

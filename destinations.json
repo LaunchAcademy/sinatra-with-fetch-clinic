@@ -9,6 +9,11 @@
    "id": 2,
    "city": "St. Petersburg",
    "country": "Russia"
+  },
+  {
+   "id": 3,
+   "city": "Seattle",
+   "country": "WA"
   }
  ]
 }
