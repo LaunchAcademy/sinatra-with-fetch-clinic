@@ -9,6 +9,36 @@
    "id": 2,
    "city": "St. Petersburg",
    "country": "Russia"
+  },
+  {
+   "id": 3,
+   "city": "Boston",
+   "country": "USA"
+  },
+  {
+   "id": 4,
+   "city": "Austin",
+   "country": "Texas"
+  },
+  {
+   "id": 5,
+   "city": "Seattle",
+   "country": "Washington"
+  },
+  {
+   "id": 6,
+   "city": "Miami",
+   "country": "Florida"
+  },
+  {
+   "id": 7,
+   "city": "Deerfield Beach",
+   "country": "Florida"
+  },
+  {
+   "id": 8,
+   "city": "Moon",
+   "country": "Milkyway"
   }
  ]
 }
