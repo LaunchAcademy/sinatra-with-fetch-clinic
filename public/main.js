@@ -1,3 +1,6 @@
+// this method will be called later to: select the "locations" ul,
+// then for every location in some "locations" array that is passed
+// append that location string to the DOM in an li tag
 let appendLocationsArrayToHtml = (locations) => {
   let locationList = document.getElementById('locations')
 
