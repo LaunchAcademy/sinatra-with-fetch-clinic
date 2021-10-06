@@ -44,7 +44,7 @@ get "/locations" do
   erb :index
 end
 
-get "/locations.json" do
+get "/api/v1/locations" do
   # grab the info we need
   locations_json_data = File.read("locations.json")
   
@@ -53,7 +53,7 @@ get "/locations.json" do
   locations_json_data
 end
 
-post "/locations.json" do
+post "/api/v1/locations" do
   new_location_data = JSON.parse(request.body.read)
   
   updated_location_hash = write_to_json_file(new_location_data["location"])
