@@ -3,17 +3,21 @@
 // append that location string to the DOM in an li tag
 let appendLocationsArrayToHtml = (locations) => {
   let locationList = document.getElementById('locations')
+  let listItems = " "
 
   locations.forEach(location => {
-    locationList.innerHTML += `<li>${location.city}, ${location.country}</li>`
+    listItems += `<li>${location.city}, ${location.country}</li>`
   })
+  locationList.innerHTML = listItems
 }
 
-let fetchLocations = () => {
-  // our code here
+let fetchLocations = async () => {
+    // our code here
 }
 
-let postLocation = (event) => {
+let postLocation = async (event) => {
+  // NOTE: added async
+
   // ooooh what does this all do?
   event.preventDefault()
 
@@ -29,9 +33,9 @@ let postLocation = (event) => {
 
   // ---------
   // fetch code here
- }
+}
 
-console.log("running JS code ")
+console.log("running JS code")
 fetchLocations()
 console.log("Fetch complete")
 
