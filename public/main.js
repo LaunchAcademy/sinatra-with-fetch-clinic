@@ -3,17 +3,36 @@
 // append that location string to the DOM in an li tag
 let appendLocationsArrayToHtml = (locations) => {
   let locationList = document.getElementById('locations')
+  let listItems = " "
 
   locations.forEach(location => {
-    locationList.innerHTML += `<li>${location.city}, ${location.country}</li>`
+    listItems += `<li>${location.city}, ${location.country}</li>`
   })
+  locationList.innerHTML = listItems
 }
 
-let fetchLocations = () => {
-  // our code here
+let fetchLocations = async () => {
+    // NOTE: added async
+
+    // our code here
+  try {
+    const response = await fetch("/locations.json")
+    if (!response.ok) {
+      const errorMessage = `${response.status} (${response.statusText})`
+      error = new Error (errorMessage)
+      throw error 
+    }
+    const responseBody = await response.json()
+    const locations = responseBody.locations
+    appendLocationsArrayToHtml(locations)
+  } catch (error) {
+    console.error(`Error in fetch: ${error.message}`)
+  }
 }
 
-let postLocation = (event) => {
+let postLocation = async (event) => {
+  // NOTE: added async
+
   // ooooh what does this all do?
   event.preventDefault()
 
@@ -29,9 +48,24 @@ let postLocation = (event) => {
 
   // ---------
   // fetch code here
- }
+  try {
+    const response = await fetch("/locations.json", {
+      method: "POST",
+      body: JSON.stringify(newLocation)
+    })
+    if (!response.ok) {
+      const errorMessage = `${response.status} (${response.statusText})`
+      error = new Error (errorMessage)
+      throw error
+    }
+    const responseBody = await response.json()
+    appendLocationsArrayToHtml(responseBody.locations)
+  } catch (error) {
+    console.error(`Error in fetch: ${error.message}`)
+  }
+}
 
-console.log("running JS code ")
+console.log("running JS code")
 fetchLocations()
 console.log("Fetch complete")
 

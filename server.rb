@@ -46,19 +46,19 @@ end
 
 get "/locations.json" do
   # grab the info we need
-  # locations_json_data = File.read("locations.json")
-  #
-  # status 200
-  # content_type :json
-  # locations_json_data
+  locations_json_data = File.read("locations.json")
+  
+  status 200
+  content_type :json
+  locations_json_data
 end
 
 post "/locations.json" do
-  # new_location_data = JSON.parse(request.body.read)
-  #
-  # updated_location_hash = write_to_json_file(new_location_data["location"])
-  #
-  # status 200
-  # content_type :json
-  # updated_location_hash.to_json
+  new_location_data = JSON.parse(request.body.read)
+  
+  updated_location_hash = write_to_json_file(new_location_data["location"])
+  
+  status 200
+  content_type :json
+  updated_location_hash.to_json
 end
