@@ -12,22 +12,7 @@ let appendLocationsArrayToHtml = (locations) => {
 }
 
 let fetchLocations = async () => {
-    // NOTE: added async
-
     // our code here
-  try {
-    const response = await fetch("/locations.json")
-    if (!response.ok) {
-      const errorMessage = `${response.status} (${response.statusText})`
-      error = new Error (errorMessage)
-      throw error 
-    }
-    const responseBody = await response.json()
-    const locations = responseBody.locations
-    appendLocationsArrayToHtml(locations)
-  } catch (error) {
-    console.error(`Error in fetch: ${error.message}`)
-  }
 }
 
 let postLocation = async (event) => {
@@ -48,21 +33,6 @@ let postLocation = async (event) => {
 
   // ---------
   // fetch code here
-  try {
-    const response = await fetch("/locations.json", {
-      method: "POST",
-      body: JSON.stringify(newLocation)
-    })
-    if (!response.ok) {
-      const errorMessage = `${response.status} (${response.statusText})`
-      error = new Error (errorMessage)
-      throw error
-    }
-    const responseBody = await response.json()
-    appendLocationsArrayToHtml(responseBody.locations)
-  } catch (error) {
-    console.error(`Error in fetch: ${error.message}`)
-  }
 }
 
 console.log("running JS code")
