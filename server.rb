@@ -44,18 +44,25 @@ get "/locations" do
   erb :index
 end
 
-get "/locations.json" do
+get "/api/v1/locations" do
   # grab the info we need
-  locations_json_data = File.read("locations.json")
+  locations_json_data = File.read("/locations.json")
   
   status 200
   content_type :json
   locations_json_data
+
+  # response.status(200)
+  # response.content_type(json)
+  # response.body = locations_json_data
+  # return response
 end
 
-post "/locations.json" do
+post "/api/v1/locations" do
   new_location_data = JSON.parse(request.body.read)
-  
+  # request.body.read is the equivalent of params
+  # if hit pry request.body.read can only run once
+
   updated_location_hash = write_to_json_file(new_location_data["location"])
   
   status 200

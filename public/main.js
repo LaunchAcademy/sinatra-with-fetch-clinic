@@ -15,19 +15,19 @@ let fetchLocations = async () => {
     // NOTE: added async
 
     // our code here
-  try {
-    const response = await fetch("/locations.json")
-    if (!response.ok) {
-      const errorMessage = `${response.status} (${response.statusText})`
-      error = new Error (errorMessage)
-      throw error 
-    }
+  // try {
+    const response = await fetch("/api/v1/locations")
+    // if (!response.ok) {
+    //   const errorMessage = `${response.status} (${response.statusText})`
+    //   error = new Error (errorMessage)
+    //   throw error 
+    // }
     const responseBody = await response.json()
     const locations = responseBody.locations
     appendLocationsArrayToHtml(locations)
-  } catch (error) {
-    console.error(`Error in fetch: ${error.message}`)
-  }
+  // } catch (error) {
+  //   console.error(`Error in fetch: ${error.message}`)
+  // }
 }
 
 let postLocation = async (event) => {
@@ -38,7 +38,8 @@ let postLocation = async (event) => {
 
   let cityInputField = document.getElementById('city')
   let countryInputField = document.getElementById('country')
-
+  // debugger
+  // cityInputField.value
   let newLocation = {
     location: {
       city: cityInputField.value,
@@ -49,14 +50,16 @@ let postLocation = async (event) => {
   // ---------
   // fetch code here
   try {
-    const response = await fetch("/locations.json", {
+    const response = await fetch("/api/v1/locations", {
+      //options object
       method: "POST",
       body: JSON.stringify(newLocation)
     })
     if (!response.ok) {
       const errorMessage = `${response.status} (${response.statusText})`
-      error = new Error (errorMessage)
+      error = new Error(errorMessage)
       throw error
+      // skip to catch
     }
     const responseBody = await response.json()
     appendLocationsArrayToHtml(responseBody.locations)
