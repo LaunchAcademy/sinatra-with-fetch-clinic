@@ -45,12 +45,9 @@ get "/locations" do
 end
 
 get "/api/v1/locations.json" do
-  # grab the info we need
-  locations_json_data = File.read("locations.json")
-  
   status 200
   content_type :json
-  locations_json_data
+  File.read("locations.json")
 end
 
 post "/api/v1/locations.json" do

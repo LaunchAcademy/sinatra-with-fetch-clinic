@@ -19,6 +19,26 @@
    "id": 4,
    "city": "Cape Town",
    "country": "South Africa"
+  },
+  {
+   "id": 5,
+   "city": "Boston",
+   "country": "USA"
+  },
+  {
+   "id": 6,
+   "city": "New York",
+   "country": "USA"
+  },
+  {
+   "id": 7,
+   "city": "Philadelphia",
+   "country": "USA"
+  },
+  {
+   "id": 8,
+   "city": "Portland",
+   "country": "USA"
   }
  ]
 }

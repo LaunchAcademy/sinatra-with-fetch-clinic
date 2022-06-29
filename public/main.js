@@ -12,7 +12,19 @@ let appendLocationsArrayToHtml = (locations) => {
 }
 
 let fetchLocations = async () => {
-    // our code here
+  try {
+    const response = await fetch("/api/v1/locations.json")
+    if(!response.ok) {
+      const errorMessage = `${response.status} ${response.statusText}`
+      throw(errorMessage)
+    }
+    const data = await response.json()
+    appendLocationsArrayToHtml(data.locations)
+  } catch(err) {
+    console.error("Error in fetch!")
+    console.error(err)
+    document.getElementById("error").innerHTML = "There was a problem fetching the data"
+  }
 }
 
 let postLocation = async (event) => {
@@ -20,6 +32,7 @@ let postLocation = async (event) => {
 
   // ooooh what does this all do?
   event.preventDefault()
+  console.log("IT SUBMITTED")
 
   let cityInputField = document.getElementById('city')
   let countryInputField = document.getElementById('country')
@@ -29,6 +42,28 @@ let postLocation = async (event) => {
       city: cityInputField.value,
       country: countryInputField.value
     }
+  }
+
+  console.log(newLocation)
+
+  try {
+    const response = await fetch("/api/v1/locations.json", {
+      method: "post",
+      body: JSON.stringify(newLocation),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if(!response.ok) {
+      const errorMessage = `${response.status} ${response.statusText}`
+      throw(errorMessage)
+    }
+    const data = await response.json()
+    appendLocationsArrayToHtml(data.locations)
+  } catch(err) {
+    console.error("Error in post fetch")
+    console.error(err)
+    document.getElementById("error").innerHTML += "Error persisting the location"
   }
 
   // ---------
