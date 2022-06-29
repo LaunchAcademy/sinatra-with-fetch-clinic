@@ -5,14 +5,14 @@ require 'pry'
 set :bind, '0.0.0.0'
 
 def write_to_json_file(location)
-  # retreieve existing JSON
+  # retrieve existing JSON
   file = File.read("locations.json")
-  # parse JSON into a ruby array
+  # parse JSON into a Ruby data structure (an array)
   locations_array = JSON.parse(file)
   # determine the id of the soon to be persisted location by using the last location's id + 1
   new_location_id = locations_array["locations"].last["id"] + 1
   
-  # construct a hash that matches the pattern esisting in the JSON file
+  # construct a hash that matches the pattern existing in the JSON file
   new_location = {
     id: new_location_id,
     city: location["city"],
@@ -24,7 +24,7 @@ def write_to_json_file(location)
     locations: locations_array["locations"].concat([new_location])
   }
 
-  # Either of these next two lines will work: pretty_generate just gives us line
+  # Either of these two lines will work: pretty_generate just gives us line
   # breaks and indentation in our .json file (making it easier on the eyes)
 
   # updated_locations_json = updated_locations.to_json
@@ -44,7 +44,7 @@ get "/locations" do
   erb :index
 end
 
-get "/locations.json" do
+get "/api/v1/locations.json" do
   # grab the info we need
   locations_json_data = File.read("locations.json")
   
@@ -53,7 +53,7 @@ get "/locations.json" do
   locations_json_data
 end
 
-post "/locations.json" do
+post "/api/v1/locations.json" do
   new_location_data = JSON.parse(request.body.read)
   
   updated_location_hash = write_to_json_file(new_location_data["location"])
