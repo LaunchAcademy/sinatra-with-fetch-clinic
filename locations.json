@@ -19,6 +19,31 @@
    "id": 4,
    "city": "Cape Town",
    "country": "South Africa"
+  },
+  {
+   "id": 5,
+   "city": "San Pablo",
+   "country": "Brazil"
+  },
+  {
+   "id": 6,
+   "city": "San Pablo",
+   "country": "Brazil"
+  },
+  {
+   "id": 7,
+   "city": "Paris ",
+   "country": "France"
+  },
+  {
+   "id": 8,
+   "city": "Nashua ",
+   "country": "NH"
+  },
+  {
+   "id": 9,
+   "city": "Sackville, NB",
+   "country": "Canada"
   }
  ]
 }

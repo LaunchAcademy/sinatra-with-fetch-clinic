@@ -40,20 +40,20 @@ get "/" do
 end
 
 get "/locations" do
-  # binding.pry
   erb :index
 end
 
-get "/api/v1/locations.json" do
-  # grab the info we need
+get "/api/v1/locations" do
   locations_json_data = File.read("locations.json")
+  # locations_data = CSV.readlines("locations.csv", headers: true)
+  # locations_json_data = locations_data.to_json
   
   status 200
   content_type :json
   locations_json_data
 end
 
-post "/api/v1/locations.json" do
+post "/api/v1/locations" do
   new_location_data = JSON.parse(request.body.read)
   
   updated_location_hash = write_to_json_file(new_location_data["location"])
